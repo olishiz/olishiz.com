@@ -1,0 +1,29 @@
+name: Restore binaries
+on:
+  push:
+    branches: [main]
+    paths: ['_b64/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decode _b64 files
+        run: |
+          set -euo pipefail
+          test -d _b64 || { echo "nothing to restore"; exit 0; }
+          find _b64 -type f -name '*.b64' | while read -r f; do
+            out="${f#_b64/}"; out="${out%.b64}"
+            mkdir -p "$(dirname "$out")"
+            base64 -d "$f" > "$out"
+            echo "restored $out"
+          done
+          git rm -r -q _b64 .github/workflows/restore-binaries.yml
+          git add -A
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Restore binary assets from _b64 and remove restore workflow"
+          git push origin HEAD:main
