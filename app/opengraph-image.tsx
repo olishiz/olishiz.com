@@ -1,7 +1,6 @@
 import { ImageResponse } from 'next/og'
 
 import { OgCard, ogFonts, ogSize } from './_og'
-import { metadata } from './page'
 
 // Shared image for the homepage and any page without its own.
 export const alt = 'Oliver Sim'
@@ -11,7 +10,7 @@ export const contentType = 'image/png'
 export default function OpenGraphImage() {
   return new ImageResponse(
     <OgCard
-      title={metadata.title}
+      title='Oliver Sim'
       description='Senior Full Stack Application Developer from Selangor, Malaysia.'
     />,
     {
