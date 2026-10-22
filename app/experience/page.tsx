@@ -1,11 +1,14 @@
+import { pageMetadata } from '@/lib/seo'
 import { H1, H2, H3, P, A, UL, LI } from '@/components/ui'
 import { summary, experience, education, skills, certificates } from '@/data/resume'
 import { socials } from '@/data/profile'
 
-export const metadata = {
+export const metadata = pageMetadata({
+  path: '/experience',
   title: 'Experience',
-  description: 'Experience, skills and education of Oliver Sim, Senior Full Stack Application Developer.',
-}
+  description:
+    "Oliver Sim's experience as a full stack engineer at Maybank, EDAG Malaysia, Etiqa Insurance & Takaful and iFAST, plus skills, education and Microsoft Azure certifications.",
+})
 
 const pdf = socials.find((s) => s.label.startsWith('Resume'))!
 

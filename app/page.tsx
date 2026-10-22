@@ -1,15 +1,32 @@
 import { H1, P, A, UL, LI } from '@/components/ui'
 import { socials } from '@/data/profile'
+import { pageMetadata } from '@/lib/seo'
 
-export const metadata = {
-  title: 'Oliver Sim',
+export const metadata = pageMetadata({
+  path: '/',
+  title: 'Oliver Sim - Full Stack Developer from Malaysia',
   description:
-    'Full Stack Developer / UX Engineer from Malaysia. Passionate about clean architecture and best web development practice.',
+    'Oliver Sim is a Full Stack Developer / UX Engineer from Malaysia, currently a Senior Full Stack Engineer at Maybank. Passionate about clean architecture and best web development practice.',
+})
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Oliver Sim',
+  url: 'https://olishiz.com',
+  jobTitle: 'Senior Full Stack Engineer',
+  worksFor: { '@type': 'Organization', name: 'Maybank' },
+  address: { '@type': 'PostalAddress', addressRegion: 'Selangor', addressCountry: 'MY' },
+  sameAs: ['https://x.com/olishiz', 'https://github.com/olishiz', 'https://www.linkedin.com/in/olishiz/'],
 }
 
 export default function Home() {
   return (
     <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       <H1>Oliver Sim</H1>
       <P>
         I am a <strong>Full Stack Developer</strong> / <strong>UX Engineer</strong> from Malaysia. Passionate about

@@ -1,11 +1,14 @@
+import { pageMetadata } from '@/lib/seo'
 import { H1, H2, P, A, UL, LI, HR } from '@/components/ui'
 import { projects } from '@/data/projects'
 import { clientWork } from '@/data/work'
 
-export const metadata = {
+export const metadata = pageMetadata({
+  path: '/projects',
   title: 'Projects',
-  description: 'Side projects and client work by Oliver Sim.',
-}
+  description:
+    'Side projects by Oliver Sim, including JomLari, Carbnb and a VS Code-style portfolio, plus websites built for clients.',
+})
 
 export default function Projects() {
   const featured = projects.filter((p) => p.featured)
