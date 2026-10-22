@@ -100,14 +100,18 @@ const monoExt = localFont({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'http://localhost:3000'),
+  metadataBase: new URL('https://olishiz.com'),
+  applicationName: 'Oliver Sim',
+  authors: [{ name: 'Oliver Sim', url: 'https://olishiz.com' }],
+  creator: 'Oliver Sim',
   title: {
     template: '%s - Oliver Sim',
     default: 'Oliver Sim',
   },
   description: 'Oliver Sim, Senior Full Stack Application Developer from Selangor, Malaysia.',
   // Show the Open Graph image as a large card on X.
-  twitter: { card: 'summary_large_image' },
+  twitter: { card: 'summary_large_image', creator: '@olishiz' },
+  openGraph: { siteName: 'Oliver Sim', locale: 'en_MY', type: 'website' },
 }
 
 export const viewport: Viewport = {

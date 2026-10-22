@@ -19,7 +19,7 @@ function Item(props: React.ComponentProps<typeof Link>) {
       className={cn(
         isActive
           ? 'text-rurikon-800'
-          : 'text-rurikon-300 hover:text-rurikon-600',
+          : 'text-rurikon-400 hover:text-rurikon-600',
         'transition-colors hover:transform-none',
         '-mx-2',
       )}

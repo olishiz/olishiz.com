@@ -5,6 +5,7 @@ import { intro, placeholder, thoughts } from '@/data/thoughts'
 export const metadata: Metadata = {
   title: 'Thoughts',
   description: 'Things Oliver Sim believes.',
+  alternates: { canonical: '/thoughts' },
   ...(placeholder ? { robots: { index: false, follow: true } } : {}),
 }
 
