@@ -1,3 +1,5 @@
+import { jomlariLogo, carbnbLogo, vscodePortfolioLogo } from './project-logos'
+
 // Side projects, in display order. One entry per project.
 // Sources: olishiz/portfolio data/showcase.ts (featured) and data/projects.ts (other).
 export interface Project {
@@ -9,6 +11,10 @@ export interface Project {
   href: string
   hrefLabel: string
   featured: boolean
+  /** Logo from the live site's icon (data URI). */
+  logo?: string
+  /** Preview screenshot of the live app in /public (640x400 WebP). */
+  preview?: string
 }
 
 export const projects: Project[] = [
@@ -22,6 +28,8 @@ export const projects: Project[] = [
     href: 'https://jomlari.app',
     hrefLabel: 'jomlari.app',
     featured: true,
+    logo: jomlariLogo,
+    preview: '/projects/jomlari.webp',
   },
   {
     slug: 'carbnb',
@@ -33,6 +41,8 @@ export const projects: Project[] = [
     href: 'https://carbnb.my/',
     hrefLabel: 'carbnb.my',
     featured: true,
+    logo: carbnbLogo,
+    preview: '/projects/carbnb.webp',
   },
   {
     slug: 'vscode-portfolio',
@@ -44,6 +54,8 @@ export const projects: Project[] = [
     href: 'https://olishiz.github.io/portfolio/vscode/',
     hrefLabel: 'olishiz.github.io/portfolio/vscode',
     featured: true,
+    logo: vscodePortfolioLogo,
+    preview: '/projects/vscode-portfolio.webp',
   },
   {
     slug: 'the-shiz',
