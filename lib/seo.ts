@@ -5,6 +5,8 @@ export const SITE_NAME = 'Oliver Sim'
 
 // Per-page metadata: canonical URL plus matching Open Graph / Twitter fields.
 // The Open Graph image comes from app/opengraph-image.tsx.
+const ogImage = { url: '/opengraph-image', width: 1200, height: 630, alt: SITE_NAME }
+
 export function pageMetadata({
   path,
   title,
@@ -25,12 +27,14 @@ export function pageMetadata({
       locale: 'en_MY',
       title: path === '/' ? title : `${title} - ${SITE_NAME}`,
       description,
+      images: [ogImage],
     },
     twitter: {
       card: 'summary_large_image',
       creator: '@olishiz',
       title: path === '/' ? title : `${title} - ${SITE_NAME}`,
       description,
+      images: [ogImage.url],
     },
   }
 }
