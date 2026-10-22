@@ -1,10 +1,11 @@
 import { H1, P, A, UL, LI } from '@/components/ui'
 import { socials } from '@/data/profile'
 import { pageMetadata } from '@/lib/seo'
+import { mudkipAvatar } from '@/data/avatar'
 
 export const metadata = pageMetadata({
   path: '/',
-  title: 'Oliver Sim - Full Stack Developer from Malaysia',
+  title: 'olishiz - personal portfolio - enjoy',
   description:
     'Oliver Sim is a Full Stack Developer / UX Engineer from Malaysia, currently a Senior Full Stack Engineer at Maybank. Passionate about clean architecture and best web development practice.',
 })
@@ -27,7 +28,20 @@ export default function Home() {
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
-      <H1>Oliver Sim</H1>
+      <H1>
+        <span className='inline-flex items-center gap-2 align-middle'>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={mudkipAvatar}
+            alt='Mudkip'
+            width={26}
+            height={26}
+            className='size-[26px] rounded-full ring-1 ring-rurikon-100 select-none motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out motion-safe:hover:-rotate-6 motion-safe:hover:scale-110'
+            draggable={false}
+          />
+          Oliver Sim
+        </span>
+      </H1>
       <P>
         I am a <strong>Full Stack Developer</strong> / <strong>UX Engineer</strong> from Malaysia. Passionate about
         clean architecture and best web development practice. Living in Selangor. I speak English, Malay, Mandarin, and
