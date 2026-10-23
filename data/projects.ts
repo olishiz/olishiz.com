@@ -1,7 +1,8 @@
 import { jomlariLogo, carbnbLogo, vscodePortfolioLogo } from './project-logos'
 
 // Side projects, in display order. One entry per project.
-// Sources: olishiz/portfolio data/showcase.ts (featured) and data/projects.ts (other).
+// Descriptions summarise what each live site (or, with no live site, the public
+// GitHub README) says, checked 2026-10-23.
 export interface Project {
   slug: string
   name: string
@@ -22,7 +23,7 @@ export const projects: Project[] = [
     slug: 'jomlari',
     name: 'JomLari',
     description:
-      'Who’s running tonight? 147 run clubs across Malaysia sorted by when they run, with a calendar, map, verified schedules and one-tap add-to-calendar.',
+      'Shows which run clubs in Kuala Lumpur, Penang and the rest of Malaysia are running tonight, sorted by when they run. Every 4 hours it re-reads each club’s public Strava page, Luma calendar or website, and each club page says when its listing was last verified.',
     tags: ['Next.js 14', 'TypeScript', 'Tailwind', 'Leaflet', 'GitHub Actions', 'Vercel'],
     year: 2026,
     href: 'https://jomlari.app',
@@ -35,7 +36,7 @@ export const projects: Project[] = [
     slug: 'carbnb',
     name: 'Carbnb',
     description:
-      'Car subscription in Malaysia: one monthly fee covers insurance, maintenance and road tax, with booking management, Curlec payments, an inventory dashboard and a master calendar.',
+      'Car subscription in Malaysia: choose a new or used car, reserve it online and have it delivered, with one monthly fee covering insurance, road tax and maintenance. Plans run 12 to 36 months, and you can swap cars after your term.',
     tags: ['Next.js', 'React', 'TypeScript', 'Curlec', 'PWA', 'Vercel'],
     year: 2026,
     href: 'https://carbnb.my/',
@@ -48,7 +49,7 @@ export const projects: Project[] = [
     slug: 'vscode-portfolio',
     name: 'VS Code Portfolio',
     description:
-      'My developer portfolio as a VS Code workspace: explorer, tabs, command palette, a working terminal and switchable editor themes.',
+      'My developer portfolio laid out as a Visual Studio Code window, where each section (home, about, projects, contact) opens as a file from the explorer.',
     tags: ['Next.js', 'React 19', 'TypeScript', 'CSS Modules', 'GitHub Pages'],
     year: 2026,
     href: 'https://olishiz.github.io/portfolio/vscode/',
@@ -61,17 +62,17 @@ export const projects: Project[] = [
     slug: 'the-shiz',
     name: 'The Shiz',
     description:
-      'A web and application studio delivering tailored websites, business platforms, e-commerce, hosting, SEO, and ongoing support.',
+      'A studio that builds websites for Malaysian brands: web applications, web design (custom, Shopify and WordPress), e-commerce and SEO, plus maintenance and hosting.',
     tags: [],
-    href: 'https://github.com/olishiz/the-shiz.co',
-    hrefLabel: 'GitHub',
+    href: 'https://the-shiz-co.vercel.app',
+    hrefLabel: 'the-shiz-co.vercel.app',
     featured: false,
   },
   {
     slug: 'ea-portal-ai-chatbot',
     name: 'EA Portal AI Chatbot',
     description:
-      'An AI-enabled enterprise assistant exploring contextual knowledge retrieval and modern conversational application patterns.',
+      'An AI chatbot built on Vercel’s open-source Chat SDK template, using Next.js and the AI SDK.',
     tags: [],
     href: 'https://github.com/olishiz/eaportal-ai-chatbot',
     hrefLabel: 'GitHub',
@@ -81,7 +82,7 @@ export const projects: Project[] = [
     slug: 'task-management-app',
     name: 'Task Management Platform',
     description:
-      'A full-stack task management application with a NestJS backend, React frontend, and PostgreSQL database.',
+      'A full-stack task management app with a NestJS GraphQL API and Prisma, a React and Vite frontend, and PostgreSQL, runnable with Docker Compose.',
     tags: [],
     href: 'https://github.com/olishiz/task-management-app',
     hrefLabel: 'GitHub',
@@ -91,7 +92,7 @@ export const projects: Project[] = [
     slug: 'tamakaki',
     name: 'TamaKaki',
     description:
-      'A modern virtual pet experience spanning life stages, skills, adventures, and home customization across devices.',
+      'A virtual pet game inspired by modern Tamagotchi devices: raise a pet from baby to elder, teach it skills, take it on adventures and customise its home.',
     tags: [],
     href: 'https://github.com/olishiz/Tamakaki',
     hrefLabel: 'GitHub',

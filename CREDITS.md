@@ -25,3 +25,9 @@ and used only to identify Oliver's employers:
 - EDAG: https://www.edag.com/_assets/4caf6c9308ed0c7682dc48ffb52a1bd1/Icons/touch_icon_big.png
 - Etiqa: https://www.etiqa.com.my/favicon.ico
 - iFAST: https://www.ifastcorp.com/ifastcorp/images/ifast-corporation-logo.png
+
+## Guestbook
+
+`app/guestbook/` is adapted from the guestbook in the [shud.in](https://github.com/shuding/shud.in)
+repository by Shu Ding (same permission and no-license note as above). Shu's entries are not
+included; notifications go to Oliver's own address.
