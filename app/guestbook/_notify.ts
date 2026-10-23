@@ -25,7 +25,12 @@ export async function notifyNewEntry({
 }) {
   const apiKey = process.env.RESEND_API_KEY
   const to = process.env.GUESTBOOK_NOTIFY_EMAIL || DEFAULT_TO
-  if (!apiKey) return
+  if (!apiKey) {
+    // No email configured: log the entry ID (never the signed link or the
+    // visitor's email) so it can be found in Vercel's runtime logs.
+    console.info(`[guestbook] New entry ${entry.id}; email notifications are off.`)
+    return
+  }
 
   // Plain text only: the message is untrusted input.
   const text = [
