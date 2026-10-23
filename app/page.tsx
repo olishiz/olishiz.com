@@ -5,7 +5,7 @@ import { mudkipAvatar } from '@/data/avatar'
 
 export const metadata = pageMetadata({
   path: '/',
-  title: 'olishiz - personal portfolio - enjoy',
+  title: 'olishiz - personal portfolio',
   description:
     'Oliver Sim is a Full Stack Developer / UX Engineer from Malaysia, currently a Senior Full Stack Engineer at Maybank. Passionate about clean architecture and best web development practice.',
 })
