@@ -8,7 +8,6 @@ import { Analytics } from '@vercel/analytics/next'
 import localFont from 'next/font/local'
 
 import Navbar from '@/components/navbar'
-import Footer from '@/components/footer'
 import './globals.css'
 
 // Fonts are subset by `scripts/subset-fonts.py` (run manually) into a core
@@ -148,11 +147,10 @@ export default function RootLayout({
           <main id='content' className='relative flex-1 max-w-2xl [contain:inline-size]'>
             <div className='absolute w-full h-px opacity-50 bg-rurikon-border right-0 mobile:right-auto mobile:left-0 mobile:w-px mobile:h-full mobile:opacity-100 mix-blend-multiply' />
             <ViewTransition name='crossfade'>
-              <article className='pl-0 pt-6 mobile:pt-0 mobile:pl-6 sm:pl-10 md:pl-14'>
+              <article className='pl-0 pt-6 pb-14 mobile:pt-0 mobile:pl-6 sm:pl-10 md:pl-14'>
                 {children}
               </article>
             </ViewTransition>
-            <Footer />
           </main>
         </div>
         <Analytics />

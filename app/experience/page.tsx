@@ -1,7 +1,6 @@
 import { pageMetadata } from '@/lib/seo'
 import { H1, H2, H3, P, A, UL, LI } from '@/components/ui'
-import { summary, experience, education, skills, certificates } from '@/data/resume'
-import { socials } from '@/data/profile'
+import { experience, education, skills, certificates } from '@/data/resume'
 
 export const metadata = pageMetadata({
   path: '/experience',
@@ -10,18 +9,10 @@ export const metadata = pageMetadata({
     "Oliver Sim's experience as a full stack engineer at Maybank, EDAG Malaysia, Etiqa Insurance & Takaful and iFAST, plus skills, education and Microsoft Azure certifications.",
 })
 
-const pdf = socials.find((s) => s.label.startsWith('Resume'))!
-
 export default function Experience() {
   return (
     <>
       <H1>Experience</H1>
-      {summary.map((s) => (
-        <P key={s}>{s}</P>
-      ))}
-      <P>
-        Full resume: <A href={pdf.href}>PDF</A>.
-      </P>
       {experience.map((job) => (
         <section key={job.company}>
           <H2>
