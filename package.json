@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/migrate.mjs && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -12,16 +12,18 @@
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^16.4.0",
+    "@supabase/supabase-js": "^2.118.0",
     "@tailwindcss/postcss": "4.0.15",
     "@types/mdx": "^2.0.12",
-    "@upstash/redis": "^1.39.0",
     "@vercel/analytics": "^1.6.1",
     "@vercel/firewall": "^1.2.6",
     "clsx": "^2.1.0",
     "next": "16.4.0",
+    "pg": "^8.23.1",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "resend": "^6.33.0",
+    "server-only": "^0.0.1",
     "sharp": "^0.33.4"
   },
   "devDependencies": {
