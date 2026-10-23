@@ -1,10 +1,4 @@
 // Source: /workspace/job-apply/Oliver_Resume_August_2026.pdf (copied verbatim).
-export const summary = [
-  'Versatile Full Stack Engineer with over 7+ years of experience developing, integrating, and maintaining enterprise applications across frontend, backend, cloud, and DevOps.',
-  'Skilled in Java, Kotlin, Node.js, React, Angular, MongoDB, Azure, CI/CD, and API integrations, with hands-on experience delivering scalable systems and AI-enabled solutions.',
-  'Strong end-to-end delivery mindset, with the ability to support the full software lifecycle from application development to infrastructure and production operations.',
-]
-
 export const experience = [
   {
     role: 'Senior Full Stack Engineer', company: 'Maybank', logo: '/logos/maybank.png', dates: '03/2025 – Present', location: 'Kuala Lumpur, Malaysia',
