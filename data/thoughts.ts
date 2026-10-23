@@ -1,4 +1,5 @@
-// Things Oliver believes, grouped by theme. Structure modelled on leerob.com/beliefs.
+// Things Oliver believes, grouped by theme. Structure modelled on leerob.com/beliefs:
+// one short heading per theme, then a handful of one-line beliefs.
 // PLACEHOLDER: every entry below is a placeholder. Replace with Oliver's own words,
 // then set `placeholder: false` (this also removes the noindex on /thoughts).
 export const placeholder = true
