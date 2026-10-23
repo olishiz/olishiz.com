@@ -52,7 +52,7 @@ export function InfoTooltip({ label, children }: { label: string; children: Reac
         role='tooltip'
         id={id}
         className={cn(
-          'pointer-events-none absolute left-1/2 top-full z-20 mt-2 w-max max-w-[min(15rem,calc(100vw-3rem))] -translate-x-1/2 rounded-sm border border-rurikon-border bg-white px-2.5 py-1.5',
+          'pointer-events-none absolute -left-2 top-full sm:left-1/2 sm:-translate-x-1/2 z-20 mt-2 w-max max-w-[min(15rem,calc(100vw-3rem))] rounded-sm border border-rurikon-border bg-white px-2.5 py-1.5',
           'font-sans text-xs font-normal leading-5 text-rurikon-500 text-pretty shadow-[0_1px_6px_rgba(0,0,0,0.04)]',
           'opacity-0 motion-safe:transition-opacity motion-safe:duration-150',
           'group-hover/tip:opacity-100 peer-focus-visible:opacity-100',
