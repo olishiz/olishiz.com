@@ -7,6 +7,7 @@ export default withMDX()({
   agentRules: false,
   turbopack: {},
   experimental: {
+    agentUpgrade: 'security',
     mdxRs: {
       mdxType: 'gfm',
     },
