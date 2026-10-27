@@ -8,6 +8,7 @@ import { Analytics } from '@vercel/analytics/next'
 import localFont from 'next/font/local'
 
 import Navbar from '@/components/navbar'
+import { SidebarToggle } from '@/components/sidebar-toggle'
 import './globals.css'
 
 // Fonts are subset by `scripts/subset-fonts.py` (run manually) into a core
@@ -124,8 +125,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en' className='overflow-x-hidden touch-manipulation'>
+    <html lang='en' className='overflow-x-hidden touch-manipulation' suppressHydrationWarning>
       <head>
+        {/* Restore the sidebar toggle before paint (see components/sidebar-toggle.tsx). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem('olishiz:nav')==='hidden')document.documentElement.dataset.nav='hidden'}catch(e){}`,
+          }}
+        />
         {/* Chrome appends a reason to a skipped view transition, for example
             "Transition was aborted because of invalid state. Document hidden".
             React only ignores the exact message, so the suffix shows up as an
@@ -174,14 +181,15 @@ export default function RootLayout({
           <Navbar />
           <a href='#content' className='sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:px-2'>Skip to content</a>
           <main id='content' className='relative flex-1 max-w-2xl [contain:inline-size]'>
-            <div className='absolute w-full h-px opacity-50 bg-rurikon-border right-0 mobile:right-auto mobile:left-0 mobile:w-px mobile:h-full mobile:opacity-100 mix-blend-multiply' />
+            <div data-sidebar-divider className='absolute w-full h-px opacity-50 bg-rurikon-border right-0 mobile:right-auto mobile:left-0 mobile:w-px mobile:h-full mobile:opacity-100 mix-blend-multiply' />
             <ViewTransition name='crossfade'>
-              <article className='pl-0 pt-6 pb-14 mobile:pt-0 mobile:pl-6 sm:pl-10 md:pl-14'>
+              <article data-sidebar-content className='pl-0 pt-6 pb-14 mobile:pt-0 mobile:pl-6 sm:pl-10 md:pl-14'>
                 {children}
               </article>
             </ViewTransition>
           </main>
         </div>
+        <SidebarToggle />
         <Analytics />
       </body>
     </html>

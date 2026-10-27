@@ -130,9 +130,24 @@ blockquote + blockquote {
 
 main {
   hanging-punctuation: first allow-end last;
-  hyphens: auto;
-  hyphenate-limit-chars: 10 6 6;
+  /* No automatic hyphenation: words stay whole and wrap at spaces. Long
+     unbreakable strings (URLs) still wrap instead of overflowing. */
+  hyphens: manual;
+  overflow-wrap: break-word;
 }
+
+/* Sidebar toggle (components/sidebar-toggle.tsx). It only exists where the nav
+   is a side column on a narrow screen: from the 420px breakpoint up to 640px. */
+@media (min-width: 420px) and (max-width: 639.98px) {
+  html[data-nav='hidden'] [data-sidebar-nav],
+  html[data-nav='hidden'] [data-sidebar-divider] {
+    display: none;
+  }
+  html[data-nav='hidden'] [data-sidebar-content] {
+    padding-left: 0;
+  }
+}
+
 
 pre {
   background-color: #f7f7f7;
@@ -290,13 +305,15 @@ article {
 
 @supports (view-transition-name: none) {
   @media not (prefers-reduced-motion: reduce) {
+    /* Keep this short: while a view transition runs the browser sends every
+       tap to the transition overlay, so nav links ignore taps until it ends. */
     ::view-transition-old(crossfade) {
-      animation: hide 0.4s cubic-bezier(0.6, 0, 0.8, 1) forwards;
+      animation: hide 0.15s cubic-bezier(0.6, 0, 0.8, 1) forwards;
     }
 
     ::view-transition-new(crossfade) {
       opacity: 0;
-      animation: appear .6s ease 0.2s forwards;
+      animation: appear 0.2s ease 0.05s forwards;
     }
   }
 }
