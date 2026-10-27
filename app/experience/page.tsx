@@ -1,6 +1,6 @@
 import { pageMetadata } from '@/lib/seo'
 import { H1, H2, H3, P, A, UL, LI } from '@/components/ui'
-import { experience, education, skills, certificates } from '@/data/resume'
+import { experience, education, skills, certificates, roleDates } from '@/data/resume'
 
 export const metadata = pageMetadata({
   path: '/experience',
@@ -9,37 +9,72 @@ export const metadata = pageMetadata({
     "Oliver Sim's experience as a full stack engineer at Maybank, EDAG Malaysia, Etiqa Insurance & Takaful and iFAST, plus skills, education and Microsoft Azure certifications.",
 })
 
+function StoryParagraph({ text }: { text: string }) {
+  const chunks = text.split(/(\[[^\]]+\]\([^)]+\))/g).filter(Boolean)
+  return (
+    <p className='mt-3'>
+      {chunks.map((chunk) => {
+        const link = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(chunk)
+        if (!link) return chunk
+        return (
+          <A key={link[2]} href={link[2]}>
+            {link[1]}
+          </A>
+        )
+      })}
+    </p>
+  )
+}
+
 export default function Experience() {
   return (
     <>
       <H1>Experience</H1>
-      {experience.map((job) => (
+      {experience.map((job) => {
+        const when = roleDates(job.dates)
+        return (
         <section key={job.company}>
           <H2>
-            <span className='inline-flex items-center gap-2.5 align-middle'>
-              <img
-                src={job.logo}
-                alt={`${job.company} logo`}
-                width={24}
-                height={24}
-                loading='lazy'
-                className='inline-block size-6 shrink-0 rounded-md border border-rurikon-border bg-white object-contain'
-              />
-              <span>
-                {job.role}, {job.company}
+            <span className='flex items-center justify-between gap-3'>
+              <span className='flex min-w-0 flex-1 items-center gap-2.5'>
+                <img
+                  src={job.logo}
+                  alt={`${job.company} logo`}
+                  width={24}
+                  height={24}
+                  loading='lazy'
+                  className='inline-block size-6 shrink-0 rounded-md border border-rurikon-border bg-white object-contain'
+                />
+                <span>
+                  {job.role}, {job.company}
+                </span>
               </span>
+              {when.present ? (
+                <span className='shrink-0 rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-medium leading-5 text-emerald-700'>
+                  Present
+                </span>
+              ) : null}
             </span>
           </H2>
           <p className='-mt-5 text-rurikon-400'>
-            <time>{job.dates}</time> · {job.location}
+            <time dateTime={when.dateTime}>
+              {when.range} · {when.duration}
+            </time>
+            <br />
+            {job.location}
           </p>
-          <UL>
-            {job.bullets.map((b) => (
-              <LI key={b}>{b}</LI>
-            ))}
-          </UL>
+          {job.story ? (
+            job.story.map((paragraph) => <StoryParagraph key={paragraph} text={paragraph} />)
+          ) : (
+            <UL>
+              {job.bullets?.map((b) => (
+                <LI key={b}>{b}</LI>
+              ))}
+            </UL>
+          )}
         </section>
-      ))}
+        )
+      })}
       <H2>Skills</H2>
       <dl className='mt-7'>
         {skills.map((s) => (

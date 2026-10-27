@@ -126,6 +126,35 @@ export default function RootLayout({
   return (
     <html lang='en' className='overflow-x-hidden touch-manipulation'>
       <head>
+        {/* Chrome appends a reason to a skipped view transition, for example
+            "Transition was aborted because of invalid state. Document hidden".
+            React only ignores the exact message, so the suffix shows up as an
+            uncaught error even though the update still applies.
+            https://github.com/facebook/react/issues/37751 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                function skipped(value) {
+                  var message = typeof value === 'string' ? value : value && value.message
+                  return typeof message === 'string' && message.indexOf('Transition was aborted because of invalid state') === 0
+                }
+                window.addEventListener('error', function (event) {
+                  if (skipped(event.error) || skipped(event.message)) {
+                    event.preventDefault()
+                    event.stopImmediatePropagation()
+                  }
+                }, true)
+                window.addEventListener('unhandledrejection', function (event) {
+                  if (skipped(event.reason)) {
+                    event.preventDefault()
+                    event.stopImmediatePropagation()
+                  }
+                }, true)
+              })()
+            `,
+          }}
+        />
         <style>{`:root {
   --sans: ${sansCore.style.fontFamily}, ${sansExt.style.fontFamily};
   --serif: ${serifCore.style.fontFamily}, ${serifExt.style.fontFamily};

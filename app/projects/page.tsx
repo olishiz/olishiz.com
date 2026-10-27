@@ -27,17 +27,28 @@ export default function Projects() {
             {p.logo ? (
               <img src={p.logo} alt='' width={20} height={20} className='size-5 shrink-0 rounded-[5px] ring-1 ring-rurikon-100' />
             ) : null}
-            <a href={p.href} className={linkClassName}>
+            <a href={p.href} target='_blank' rel='noopener noreferrer' className={linkClassName}>
               {p.name}
             </a>
           </h2>
           <P>{p.description}</P>
-          <p className='mt-2 text-sm text-rurikon-400'>
-            {[p.year, ...p.tags].filter(Boolean).join(' · ')}
-          </p>
+          {p.tags.length > 0 ? (
+            <ul className='mt-3 flex flex-wrap gap-1.5' aria-label='Stack'>
+              {p.tags.map((tag) => (
+                <li
+                  key={tag}
+                  className='rounded-full border border-rurikon-border px-2.5 py-px text-xs leading-5 text-rurikon-500'
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          ) : null}
           {p.preview ? (
             <a
               href={p.href}
+              target='_blank'
+              rel='noopener noreferrer'
               className='group mt-7 block max-w-[400px] overflow-hidden rounded-md ring-1 ring-rurikon-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rurikon-400'
             >
               <img
@@ -53,15 +64,7 @@ export default function Projects() {
           ) : null}
         </section>
       ))}
-      <H2>Other projects</H2>
-      <UL>
-        {other.map((p) => (
-          <LI key={p.slug}>
-            <A href={p.href}>{p.name}</A>: {p.description}
-          </LI>
-        ))}
-      </UL>
-      <H2>Client work</H2>
+      <H2>Client work / other projects</H2>
       <UL>
         {clientWork.map((w) => (
           <LI key={w.href}>

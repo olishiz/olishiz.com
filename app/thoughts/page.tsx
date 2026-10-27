@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from 'next'
+import type { ReactNode } from 'react'
+import { A } from '@/components/ui'
 import { intro, placeholder, thoughts } from '@/data/thoughts'
 import { mudkipAvatar } from '@/data/avatar'
 
@@ -19,6 +21,26 @@ function slug(text: string) {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 }
 
+function renderItem(text: string) {
+  const nodes: ReactNode[] = []
+  const linkPattern = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g
+  let last = 0
+
+  for (const match of text.matchAll(linkPattern)) {
+    const index = match.index ?? 0
+    if (index > last) nodes.push(text.slice(last, index))
+    nodes.push(
+      <A key={`${match[2]}-${index}`} href={match[2]}>
+        {match[1]}
+      </A>,
+    )
+    last = index + match[0].length
+  }
+
+  if (last < text.length) nodes.push(text.slice(last))
+  return nodes
+}
+
 export default function Thoughts() {
   return (
     <article className={`${serif} text-rurikon-700`}>
@@ -34,14 +56,14 @@ export default function Thoughts() {
         <section key={t.heading} aria-labelledby={slug(t.heading)}>
           <h2
             id={slug(t.heading)}
-            className='mt-[3.1rem] mb-[1.2rem] text-[1.45rem] leading-[1.4] font-semibold tracking-[-0.02em] text-rurikon-800 text-balance scroll-mt-6 sm:scroll-mt-14'
+            className='mt-[1.2rem] mb-[1.2rem] text-[1.45rem] leading-[1.4] font-semibold tracking-[-0.02em] text-rurikon-800 text-balance scroll-mt-6 sm:scroll-mt-14'
           >
             {t.heading}
           </h2>
           <ul className='mt-4 mb-[1.2rem] list-[square] list-outside pl-5 marker:text-rurikon-300 text-[17px] leading-[1.6]'>
             {t.items.map((i, k) => (
               <li key={k} className='mb-[0.2rem] pl-1'>
-                {i}
+                {renderItem(i)}
               </li>
             ))}
           </ul>
