@@ -104,6 +104,28 @@ export const components: Record<
   ),
   code: (props) => <code className='inline' {...props} />,
   Image,
+  // Responsive image with its real size, so it never stretches past its
+  // natural width and the page doesn't jump while it loads.
+  Figure: ({ src, alt = '', width, height, children }) => (
+    <figure className='mt-7'>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading='lazy'
+        decoding='async'
+        draggable={false}
+        className='block h-auto max-w-full'
+      />
+      {children ? (
+        <figcaption className='mt-2 text-sm leading-6 text-rurikon-400 text-center'>
+          {children}
+        </figcaption>
+      ) : null}
+    </figure>
+  ),
   hr: (props) => <hr className='my-14 w-24 border-rurikon-border' {...props} />,
   BlockSideTitle,
 }
