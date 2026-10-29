@@ -1,0 +1,24 @@
+name: restore-blog-images
+on:
+  push:
+    branches: [main]
+    paths: ['_restore/**']
+permissions:
+  contents: write
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          for f in _restore/*.b64; do
+            b=$(basename "$f" .b64); slug=${b%%__*}; name=${b#*__}
+            mkdir -p "public/blog/$slug"
+            base64 -d "$f" > "public/blog/$slug/$name"
+          done
+          git rm -rq _restore .github/workflows/restore-blog-images.yml
+          git add public/blog
+          git config user.name olishiz
+          git config user.email zhuen1101@hotmail.com
+          git commit -m "Restore blog images (one-time workflow, removes itself)"
+          git push
