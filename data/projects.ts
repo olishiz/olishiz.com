@@ -1,4 +1,4 @@
-import {carbnbLogo, jomlariLogo, vscodePortfolioLogo} from './project-logos'
+import {carbnbLogo, jomlariLogo, stageshowGalleryLogo, vscodePortfolioLogo} from './project-logos'
 
 // Side projects, in display order. One entry per project.
 // Descriptions summarise what each live site (or, with no live site, the public
@@ -52,5 +52,17 @@ export const projects: Project[] = [
     featured: true,
     logo: vscodePortfolioLogo,
     preview: '/projects/vscode-portfolio.webp',
+  },
+  {
+    slug: 'stageshow-gallery',
+    name: 'Stageshow Gallery',
+    description:
+        'An installable, offline-capable gallery of 16 showcase UI components: bento grids, animated UI stills, cards, hero sections, and micro-interactions. Each opens as a live preview in light or dark mode with source code you can copy. Built with Benji Taylor\'s Stageshow skill.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind', 'PWA', 'Vercel'],
+    href: 'https://showcase.olishiz.com',
+    hrefLabel: 'showcase.olishiz.com',
+    featured: true,
+    logo: stageshowGalleryLogo,
+    preview: '/projects/stageshow-gallery.webp',
   },
 ]
