@@ -29,11 +29,11 @@ function StoryParagraph({ text }: { text: string }) {
 export default function Experience() {
   return (
     <>
-      <H1>Experience</H1>
-      {experience.map((job) => {
+      <H1 className='font-semibold mb-4 text-rurikon-600 text-balance'>Experience</H1>
+      {experience.map((job, i) => {
         const when = roleDates(job.dates)
         return (
-        <section key={job.company}>
+        <section key={job.company} className={i === 0 ? '[&>h2]:mt-0' : undefined}>
           <H2>
             <span className='flex items-center justify-between gap-3'>
               <span className='flex min-w-0 flex-1 items-center gap-2.5'>
